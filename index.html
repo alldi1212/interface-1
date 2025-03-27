@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Belajar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ff004f;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 350px;
+            text-align: center;
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: white;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: white;
+            border: none;
+            border-radius: 5px;
+            color: #6A11CB;
+            cursor: pointer;
+        }
+        .dashboard {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .dashboard h1 {
+            color: #6A11CB;
+        }
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .category {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .category i {
+            font-size: 30px;
+            color: #6A11CB;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="loginPage">
+        <h2>SELAMAT DATANG DI TEAMCUTE.NET</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Masukkan Nama" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="dashboard" id="dashboard">
+        <h1>Menu</h1>
+        <h2>Selamat Datang, <span id="userDisplay"></span>!</h2>
+        <div class="categories">
+            <div class="category"><i class="fas fa-atom"></i><p>Physics</p></div>
+            <div class="category"><i class="fas fa-square-root-alt"></i><p>Math</p></div>
+            <div class="category"><i class="fas fa-code"></i><p>Programming</p></div>
+            <div class="category"><i class="fas fa-chart-bar"></i><p>Evaluation</p></div>
+        </div>
+        <button onclick="handleLogout()">Logout</button>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            
+            if (username !== "") {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                document.getElementById('userDisplay').textContent = username;
+            } else {
+                alert('Silakan masukkan nama!');
+            }
+        });
+
+        function handleLogout() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'block';
+            document.getElementById('username').value = '';
+        }
+    </script>
+</body>
+</html>
